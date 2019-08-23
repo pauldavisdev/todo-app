@@ -8,6 +8,7 @@ class="card"
 >
 <div class="card-body">
   <h6 class="card-title">{{ todoItem.title }}</h6>
-  <p class="card-text">{{ todoItem.description }}</p>
+  <p *ngIf="todoItem.description.length > 200" class="card-text">{{ todoItem.description.slice(0, 175) }}.....</p>
+  <p *ngIf="(todoItem.description.length) < 201" class="card-text">{{ todoItem.description }}</p>
 </div>
 </div>

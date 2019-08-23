@@ -1,30 +1,33 @@
-<app-navbar></app-navbar>
-<h1>New Todo</h1>
-<hr />
-<div class="col-md-6">
-  <form #createTodoForm="ngForm" (ngSubmit)="saveTodo(createTodoForm.value)">
-    <div class="form-group">
-      <label for="title">Title:</label>
-      <input
-        (ngModel)="title"
-        name="title"
-        id="title"
-        type="text"
-        class="form-control"
-        placeholder="Title..."
-        >
+<div class="container">
+  <h1>New Todo</h1>
+  <hr />
+  <div class="col-md-6">
+    <form #createTodoForm="ngForm" (ngSubmit)="saveTodo(createTodoForm.value)">
+      <div class="form-group">
+        <label for="title">Title:</label>
         <input
-        (ngModel)="description"
-        name="description"
-        id="description"
-        type="text"
-        class="form-control"
-        placeholder="Description..."
-        >
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-    <button [routerLink]="['/todo']" type="button" class="btn btn-default">
-      Cancel
-    </button>
-  </form>
+          (ngModel)="(title)"
+          name="title"
+          id="title"
+          type="text"
+          class="form-control"
+          placeholder="Title..."
+        />
+      </div>
+      <div class="form-group">
+        <input
+          (ngModel)="(description)"
+          name="description"
+          id="description"
+          type="textarea"
+          class="form-control text-truncate"
+          placeholder="Description..."
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button [routerLink]="['/todo']" type="button" class="btn btn-default">
+        Cancel
+      </button>
+    </form>
+  </div>
 </div>

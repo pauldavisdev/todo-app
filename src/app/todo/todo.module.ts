@@ -20,7 +20,6 @@ import { TodoDetailsResolver } from './todo-details/todo-details.resolver';
     TodoFilterComponent,
     TodoCardComponent,
     TodoDetailsComponent,
-    NavbarComponent,
     CreateTodoComponent
   ],
   imports: [
