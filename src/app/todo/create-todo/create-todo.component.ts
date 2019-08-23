@@ -13,6 +13,7 @@ export class CreateTodoComponent implements OnInit {
   isDirty = true;
 
   title: string;
+  description: string;
 
   constructor(private router: Router,
     private todoService: TodoService) { }
@@ -23,13 +24,14 @@ export class CreateTodoComponent implements OnInit {
   saveTodo(formValues) {
     const newTodo: ITodoItem = {
       title: formValues.title,
+      description: formValues.description,
       userId: 1,
       completed: false
     };
 
     this.todoService.saveTodo(newTodo).subscribe(() => {
       this.isDirty = false;
-      this.router.navigate(['/todos']);
+      this.router.navigate(['/todo']);
     });
   }
 

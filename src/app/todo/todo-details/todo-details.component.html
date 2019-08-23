@@ -12,9 +12,17 @@
           <div class="form-group">
             <input
               class="form-control"
-              value=[(todoItem.title)]
+              [(ngModel)]="todoItem.title"
               name="title"
-              id="name"
+              id="title"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              [(ngModel)]="todoItem.description"
+              name="description"
+              id="description"
             />
           </div>
           <div class="form-group">
@@ -28,12 +36,14 @@
             <input
               class="form-control"
               value="User ID: {{ todoItem?.userId }}"
+              readonly
             />
           </div>
           <div class="form-group">
             <input
               class="form-control"
               value="Completed: {{ todoItem?.completed }}"
+              readonly
             />
           </div>
           <button class="btn btn-sm btn-primary">Save Changes</button>

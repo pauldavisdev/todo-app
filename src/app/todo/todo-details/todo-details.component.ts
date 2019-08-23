@@ -30,6 +30,7 @@ export class TodoDetailsComponent implements OnInit {
       id: this.todoItem.id,
       userId: this.todoItem.userId,
       title: formValues.title,
+      description: formValues.description,
       completed: this.todoItem.completed,
     };
 
@@ -51,6 +52,7 @@ export class TodoDetailsComponent implements OnInit {
       id: this.todoItem.id,
       userId: this.todoItem.userId,
       title: formValues.title,
+      description: formValues.description,
       completed: true,
     };
 
