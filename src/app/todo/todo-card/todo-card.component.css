@@ -1,0 +1,12 @@
+.card {
+  height: 200px;
+  margin-top: 30px;
+}
+
+.bg-success {
+  background-color: lightgreen!important;
+}
+
+.bg-danger {
+  background-color: lightcoral!important;
+}

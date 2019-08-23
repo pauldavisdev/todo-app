@@ -1,5 +1,23 @@
-navbar
-
-<p>
-  todo-list works!
-</p>
+<app-navbar></app-navbar>
+<div>
+  <app-todo-filter
+    (sortEmitter)="sortByTitle()"
+    (filterOnChangeEmitter)="filterSelected($event)"
+  ></app-todo-filter>
+</div>
+<div class="row">
+<div class="col-4"
+  *ngFor="
+    let todoItem of visibleTodoList
+      | paginate: { itemsPerPage: 9, currentPage: p }
+  "
+>
+  <app-todo-card [todoItem]="todoItem"></app-todo-card>
+</div>
+</div>
+<pagination-controls
+  class="my-pagination d-flex justify-content-center"
+  autoHide="true"
+  directionLinks="false"
+  (pageChange)="p = $event"
+></pagination-controls>

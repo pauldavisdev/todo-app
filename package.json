@@ -1,5 +1,5 @@
 {
-  "name": "todo-app-new",
+  "name": "todo-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -25,6 +25,7 @@
     "core-js": "^2.5.4",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
+    "ngx-pagination": "^4.1.0",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",
     "tslib": "^1.9.0",

@@ -1,0 +1,13 @@
+<div
+class="card"
+[routerLink]="['/todo', todoItem.id]"
+[ngClass]="{
+  'bg-success': todoItem.completed,
+  'bg-danger': !todoItem.completed
+}"
+>
+<div class="card-body">
+  <h6 class="card-title">{{ todoItem.id }}</h6>
+  <p class="card-text">{{ todoItem.title }}</p>
+</div>
+</div>

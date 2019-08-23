@@ -1,0 +1,15 @@
+<div class="form-group">
+  <select
+    class="form-control"
+    id="filter-select"
+    (change)="filterChanged($event.target.value)"
+  >
+    <option>All</option>
+    <option>Complete</option>
+    <option>Incomplete</option>
+  </select>
+</div>
+<button type="button" class="btn btn-secondary col-md-4" (click)="sortClicked()">
+  <div *ngIf="this.sortByTitleAsc">Sort By Title DESC</div>
+  <div *ngIf="!this.sortByTitleAsc">Sort By Title ASC</div>
+</button>
