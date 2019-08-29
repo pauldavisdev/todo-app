@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { ITodoItem } from './todo-item.model';
 import { environment } from 'src/environments/environment';
 
 const API_URL = environment.apiUrl;
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class TodoService {
 
   constructor(private http: HttpClient) {}
 
   getTodoList(): Observable<Array<ITodoItem>> {
     return this.http
-      .get<Array<ITodoItem>>(API_URL + 'todo')
-      .pipe(catchError(this.handleError<Array<ITodoItem>>('getTodoList', [])));
+      .get<Array<ITodoItem>>(API_URL + 'todo');
   }
 
   getTodoById(id: number): Observable<ITodoItem> {

@@ -1,0 +1,10 @@
+::ng-deep .mat-card {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+}
+
+.mat-card:hover {
+  background-color: lightgoldenrodyellow;
+  position: relative;
+  top: -3px;
+}
