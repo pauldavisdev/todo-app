@@ -1,14 +1,21 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, Injectable } from '@angular/core';
 import { ITodoItem } from '../../todo-item.model';
 import { FormGroup, FormControl } from '@angular/forms';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-todo-card',
   templateUrl: './todo-card.component.html',
   styleUrls: ['./todo-card.component.css']
 })
+@Injectable()
 export class TodoCardComponent implements OnInit {
-  constructor () {}
+
+  constructor() {}
 
   originalTodo: ITodoItem | undefined;
 

@@ -1,18 +1,20 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
-import { ITodoItem } from 'src/app/todo';
+import { ITodoItem, TodoService } from 'src/app/todo';
 import { TodoApiActions, TodoPageActions } from 'src/app/todo/actions';
 import { createSelector } from '@ngrx/store';
+import { pipe } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
-const adapter = createEntityAdapter({
-  selectId: (todo: ITodoItem) => todo.id
-});
+const adapter = createEntityAdapter<ITodoItem>();
 
 export interface State extends EntityState<ITodoItem> {
   activeTodoId: string | null;
+  isDialogOpen: boolean;
 }
 
 export const initialState: State = adapter.getInitialState({
-  activeTodoId: null
+  activeTodoId: null,
+  isDialogOpen: false
 });
 
 export function reducer(
@@ -32,6 +34,17 @@ export function reducer(
     case TodoApiActions.loadTodosSuccess.type: {
       return adapter.addAll(action.todos, state);
     }
+    case TodoPageActions.openDialog.type: {
+      console.log('dialog opened');
+      return { ...state, isDialogOpen: true };
+    }
+    case TodoPageActions.closeDialog.type: {
+      console.log('dialog closed');
+      return { ...state, isDialogOpen: false };
+    }
+    case TodoPageActions.saveTodo.type: {
+      return adapter.addOne(action.todo, state);
+    }
     default: {
       return state;
     }
@@ -45,5 +58,7 @@ export const selectActiveTodoId = (state: State) => state.activeTodoId;
 export const selectActiveTodo = createSelector(
   selectEntities,
   selectActiveTodoId,
-  (entities, activeTodoId) => entities[activeTodoId],
+  (entities, activeTodoId) => entities[activeTodoId]
 );
+
+export const selectIsDialogOpen = (state: State) => state.isDialogOpen;

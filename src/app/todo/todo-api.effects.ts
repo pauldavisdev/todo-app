@@ -7,8 +7,7 @@ import {
   catchError,
   map,
   tap,
-  withLatestFrom,
-  mergeMap
+  mergeMap,
 } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { select, Store } from '@ngrx/store';
@@ -16,6 +15,7 @@ import * as fromRoot from 'src/app/shared/state';
 
 @Injectable()
 export class TodoApiEffects {
+
   activeTodo$ = this.store.pipe(select(fromRoot.selectActiveTodo));
   constructor(
     private actions$: Actions<TodoPageActions.Union>,
@@ -30,6 +30,16 @@ export class TodoApiEffects {
         map(todos => TodoApiActions.loadTodosSuccess({ todos })),
         tap(todos => console.log(todos)),
         catchError(() => of(TodoApiActions.loadTodosFailure()))
+      )
+    )
+  );
+
+  @Effect() saveTodo$ = this.actions$.pipe(
+    ofType(TodoPageActions.saveTodo.type),
+    mergeMap(action =>
+      this.todoService.saveTodo(action.todo).pipe(
+        map(todo => TodoApiActions.saveTodoSuccess({ todo })),
+        catchError(() => of(TodoApiActions.saveTodoFailure()))
       )
     )
   );

@@ -30,3 +30,8 @@ export const selectActiveTodo = createSelector(
   selectTodoState,
   fromTodos.selectActiveTodo,
 );
+
+export const selectIsDialogOpen = createSelector(
+  selectTodoState,
+  fromTodos.selectIsDialogOpen,
+);

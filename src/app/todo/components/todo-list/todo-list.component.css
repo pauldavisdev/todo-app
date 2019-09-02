@@ -1,4 +1,4 @@
-::ng-deep .mat-card {
+.mat-card {
     width: calc(100% - 20px);
     height: calc(100% - 20px);
 }

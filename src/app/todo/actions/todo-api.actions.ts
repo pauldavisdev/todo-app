@@ -8,6 +8,16 @@ export const loadTodosSuccess = createAction(
 
 export const loadTodosFailure = createAction('[Todo API] Load Todos Failure');
 
+export const saveTodoSuccess = createAction(
+  '[Todo API] Save Todo Success',
+  props<{ todo: ITodoItem }>()
+);
+
+export const saveTodoFailure = createAction('[Todo API] Save Todo Failure');
+
 export type Union = ReturnType<
-  typeof loadTodosSuccess | typeof loadTodosFailure
+  | typeof loadTodosSuccess
+  | typeof loadTodosFailure
+  | typeof saveTodoSuccess
+  | typeof saveTodoFailure
 >;
