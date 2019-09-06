@@ -25,6 +25,11 @@ export const closeDialog = createAction(
   '[Todo Page] Close Dialog',
 );
 
+export const updateTodo = createAction(
+  '[Todo Page] Update Todo',
+  props<{ todo: ITodoItem }>(),
+);
+
 export type Union = ReturnType<
 | typeof enter
 | typeof selectTodo
@@ -32,4 +37,5 @@ export type Union = ReturnType<
 | typeof saveTodo
 | typeof openDialog
 | typeof closeDialog
+| typeof updateTodo
 >;

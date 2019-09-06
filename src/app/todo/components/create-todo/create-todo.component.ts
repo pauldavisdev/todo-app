@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { TodoService } from '../../todo.service';
 import { ITodoItem } from '../../todo-item.model';
 import * as fromRoot from 'src/app/shared/state';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { TodoPageActions } from '../../actions';
+import { pipe } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-todo',
@@ -16,10 +18,9 @@ export class CreateTodoComponent implements OnInit {
 
   title: string;
   description: string;
+  nextId$ = this.store.pipe(select(fromRoot.selectNextId));
 
   constructor(
-    private router: Router,
-    private todoService: TodoService,
     private store: Store<fromRoot.State>
   ) {}
 
@@ -28,7 +29,6 @@ export class CreateTodoComponent implements OnInit {
   saveTodo(formValues) {
 
     const newTodo: ITodoItem = {
-      id: 0,
       title: formValues.title,
       description: formValues.description,
       userId: 1,
@@ -38,5 +38,11 @@ export class CreateTodoComponent implements OnInit {
     console.log(newTodo);
 
     this.store.dispatch(TodoPageActions.saveTodo({ todo: newTodo }));
+  }
+
+  cancel() {
+    this.title = '';
+    this.description = '';
+
   }
 }

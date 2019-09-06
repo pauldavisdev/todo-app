@@ -15,9 +15,18 @@ export const saveTodoSuccess = createAction(
 
 export const saveTodoFailure = createAction('[Todo API] Save Todo Failure');
 
+export const updateTodoSuccess = createAction(
+  '[Todo API] Update Todo Success',
+  props<{ todo: ITodoItem }>()
+);
+
+export const updateTodoFailure = createAction('[Todo API] Update Todo Failure');
+
 export type Union = ReturnType<
   | typeof loadTodosSuccess
   | typeof loadTodosFailure
   | typeof saveTodoSuccess
   | typeof saveTodoFailure
+  | typeof updateTodoSuccess
+  | typeof updateTodoFailure
 >;

@@ -1,20 +1,8 @@
-<!-- <mat-grid-list cols="3">
-  <mat-grid-tile *ngFor="let todo of todos">
-      <mat-card (click)="this.select.emit(todo)"> -->
-<!-- <mat-card-title>{{ todo.title }}</mat-card-title>
-      <mat-card-content>{{ todo.description }}</mat-card-content> -->
-<!-- <h6>{{ todo.title }}</h6>
-        <p>{{ todo.description }}</p>
-      </mat-card>
-  </mat-grid-tile>
-</mat-grid-list> -->
 <div class="row">
   <div class="col-md-4" *ngFor="let todo of todos">
     <mat-card (click)="this.select.emit(todo)">
-      <!-- <mat-card-title>{{ todo.title }}</mat-card-title>
-      <mat-card-content>{{ todo.description }}</mat-card-content> -->
-      <h6>{{ todo.title }}</h6>
-      <p>{{ todo.description }}</p>
+      <mat-card-title>{{ todo.title }}</mat-card-title>
+      <mat-card-content>{{ todo.description }}</mat-card-content>
     </mat-card>
   </div>
 </div>
