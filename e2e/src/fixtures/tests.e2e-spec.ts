@@ -81,8 +81,14 @@ test('update todo', async t => {
     .expect(todoPage.todoCards.nth(todoIndex).find('#description').withExactText(updatedDescription)).ok();
 });
 
-test('delete todo, deleted todo should be removed from the todo list', async t => {
+test('delete todo', async t => {
 
+  const todoIndex = 0;
+
+  await t
+    // click first todo
+    .click(todoPage.todoCards.nth(todoIndex))
+    .click(todoPage.deleteTodoButton);
 });
 
 test('logout', async t => {
