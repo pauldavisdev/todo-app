@@ -54,4 +54,18 @@ export class TodoApiEffects {
       )
     )
   );
+
+  @Effect() deleteTodo$ = this.actions$.pipe(
+    ofType(TodoPageActions.deleteTodo.type),
+    mergeMap(action =>
+      this.todoService.deleteTodo(action.todo).pipe(
+        map(() =>
+          TodoApiActions.deleteTodoSuccess({ todo: action.todo })
+        ),
+        catchError(() =>
+          of(TodoApiActions.deleteTodoFailure({ todo: action.todo }))
+        )
+      )
+    )
+  );
 }

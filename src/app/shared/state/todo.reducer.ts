@@ -50,6 +50,12 @@ export function reducer(
         { ...state, activeTodoId: action.todo.id }
       );
     }
+    case TodoApiActions.deleteTodoSuccess.type: {
+      return adapter.removeOne(action.todo.id, {
+        ...state,
+        activeTodoId: null,
+      });
+    }
     default: {
       return state;
     }

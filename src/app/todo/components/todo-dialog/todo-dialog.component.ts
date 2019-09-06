@@ -45,7 +45,14 @@ export class TodoDialogComponent implements OnInit {
   }
 
   deleteTodo() {
-    // delete todo using this.data.activeTodo.id
+    const todo: ITodoItem = {
+      id: this.data.activeTodo.id,
+      userId: this.data.activeTodo.userId,
+      title: '',
+      description: '',
+      completed: this.data.activeTodo.completed,
+    };
+    this.store.dispatch(TodoPageActions.deleteTodo({ todo: todo }));
   }
 
   onNoClick(): void {

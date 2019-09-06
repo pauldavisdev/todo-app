@@ -30,6 +30,11 @@ export const updateTodo = createAction(
   props<{ todo: ITodoItem }>(),
 );
 
+export const deleteTodo = createAction(
+  '[Todo Page] Delete Todo',
+  props<{ todo: ITodoItem }>()
+);
+
 export type Union = ReturnType<
 | typeof enter
 | typeof selectTodo
@@ -38,4 +43,5 @@ export type Union = ReturnType<
 | typeof openDialog
 | typeof closeDialog
 | typeof updateTodo
+| typeof deleteTodo
 >;
