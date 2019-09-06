@@ -1,6 +1,5 @@
 <mat-card>
   <form #createTodoForm="ngForm" (ngSubmit)="saveTodo(createTodoForm.value)">
-    <mat-card-title>New</mat-card-title>
     <mat-form-field class="full-width">
       <input
         matInput
@@ -21,7 +20,7 @@
         type="textarea"
       />
     </mat-form-field>
-    <button mat-button type="submit">Save</button>
+    <button mat-button color="primary" type="submit">Save</button>
     <button mat-button type="button">Cancel</button>
   </form>
 </mat-card>
