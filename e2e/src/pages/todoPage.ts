@@ -6,8 +6,11 @@ export class TodoPage {
   createTodoTitleInput: Selector;
   createTodoDescriptionInput: Selector;
   createTodoSaveButton: Selector;
-  lastTodoElement: Selector;
+  todoCards: Selector;
   todoDialogWindow: Selector;
+  todoDialogTitle: Selector;
+  todoDialogDescription: Selector;
+  updateTodoButton: Selector;
 
   constructor () {
     const createTodoComponent = AngularSelector('app-todo-page app-create-todo');
@@ -16,8 +19,11 @@ export class TodoPage {
     this.createTodoTitleInput = createTodoComponent.find('#title');
     this.createTodoDescriptionInput = createTodoComponent.find('#description');
     this.createTodoSaveButton = createTodoComponent.find('button').withText('Save');
-    this.lastTodoElement = todoListComponent.find('mat-card');
+    this.todoCards = todoListComponent.find('mat-card');
     this.todoDialogWindow = Selector('.mat-dialog-container');
+    this.todoDialogTitle = this.todoDialogWindow.find('#title');
+    this.todoDialogDescription = this.todoDialogWindow.find('#description');
+    this.updateTodoButton = this.todoDialogWindow.find('button').withText('Update');
   }
 
   findDialogTextByCssSelector(cssSelector: string, text: string) {
