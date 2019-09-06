@@ -88,7 +88,9 @@ test('delete todo', async t => {
   await t
     // click first todo
     .click(todoPage.todoCards.nth(todoIndex))
+    // click delete button
     .click(todoPage.deleteTodoButton);
+    // check todo card is deleted
 });
 
 test('logout', async t => {
@@ -96,5 +98,3 @@ test('logout', async t => {
     .maximizeWindow()
     .click(navPage.logOutButton);
 });
-
-
