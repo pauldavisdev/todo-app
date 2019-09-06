@@ -25,7 +25,7 @@ export class TodoDialogComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dialogRef.updateSize('800px', '400px');
+    this.dialogRef.updateSize('600px', '300px');
   }
 
   updateTodo(formValues) {
@@ -42,6 +42,10 @@ export class TodoDialogComponent implements OnInit {
 
     this.store.dispatch(TodoPageActions.updateTodo({ todo: todo }));
     this.dialogRef.close();
+  }
+
+  deleteTodo() {
+    // delete todo using this.data.activeTodo.id
   }
 
   onNoClick(): void {

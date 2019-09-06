@@ -1,31 +1,30 @@
-<!-- <h6>{{ data.activeTodo.id }}</h6>
-<h6>{{ data.activeTodo.userId }}</h6> -->
-<!-- <h1>{{ data.activeTodo.title }}</h1>
-<p>{{ data.activeTodo.description }}</p>
-<h3>{{ data.activeTodo.completed }}</h3> -->
 <form #createTodoForm="ngForm" (ngSubmit)="updateTodo(createTodoForm.value)">
-  <mat-card-title>New</mat-card-title>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Title"
-      [ngModel]="data.activeTodo.title"
-      name="title"
-      id="title"
-      type="text"
-      value="{{data.activeTodo.title}}"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      placeholder="Description"
-      [ngModel]="data.activeTodo.description"
-      name="description"
-      id="description"
-      type="textarea"
-      value="{{data.activeTodo.description}}"
-    />
-  </mat-form-field>
+  <div class="row">
+    <mat-form-field class="full-width">
+      <input
+        matInput
+        placeholder="Title"
+        [ngModel]="data.activeTodo.title"
+        name="title"
+        id="title"
+        type="text"
+        value="{{ data.activeTodo.title }}"
+      />
+    </mat-form-field>
+  </div>
+  <div class="row">
+    <mat-form-field class="full-width">
+      <textarea
+        matInput
+        placeholder="Description"
+        [ngModel]="data.activeTodo.description"
+        name="description"
+        id="description"
+        type="textarea"
+        value="{{ data.activeTodo.description }}">
+      </textarea>
+    </mat-form-field>
+  </div>
   <button mat-button type="submit">Update</button>
+  <button mat-button type="button" (click)="deleteTodo()">Delete</button>
 </form>
