@@ -46,8 +46,8 @@ test('create and save new todo', async t => {
 
   await t
     // fill out form and click save button
-    .typeText(todoPage.createTodoTitleInput, 'testcafe title')
-    .typeText(todoPage.createTodoDescriptionInput, 'testcafe description')
+    .typeText(todoPage.createTodoTitleInput, title)
+    .typeText(todoPage.createTodoDescriptionInput, description)
     .click(todoPage.createTodoSaveButton)
     // new todo should be added to the list, check title and description
     .expect(todoPage.todoCards.nth(-1).find('h1').withExactText(title)).ok()
@@ -84,13 +84,15 @@ test('update todo', async t => {
 test('delete todo', async t => {
 
   const todoIndex = 0;
+  const todoCount = await todoPage.todoCards.count;
 
   await t
     // click first todo
     .click(todoPage.todoCards.nth(todoIndex))
     // click delete button
-    .click(todoPage.deleteTodoButton);
+    .click(todoPage.deleteTodoButton)
     // check todo card is deleted
+    .expect(todoPage.todoCards.count).eql(todoCount - 1);
 });
 
 test('logout', async t => {
