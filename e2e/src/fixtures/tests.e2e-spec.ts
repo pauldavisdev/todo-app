@@ -42,12 +42,15 @@ fixture('todo: create, read, update, delete')
       .click(loginPage.loginButton);
   });
 
-test('create and save new todo', async t => {
+test('create todo', async t => {
 
   await t
-    // fill out form and click save button
+    // fill out form and check input text is as expected
     .typeText(todoPage.createTodoTitleInput, title)
+    .expect(todoPage.createTodoTitleInput.value).eql(title)
     .typeText(todoPage.createTodoDescriptionInput, description)
+    .expect(todoPage.createTodoDescriptionInput.value).eql(description)
+    // click save button
     .click(todoPage.createTodoSaveButton)
     // new todo should be added to the list, check title and description
     .expect(todoPage.todoCards.nth(-1).find('h1').withExactText(title)).ok()
@@ -70,10 +73,8 @@ test('update todo', async t => {
     // click first todo
     .click(todoPage.todoCards.nth(todoIndex))
     // enter updated title and description
-    .selectText(todoPage.todoDialogTitle)
-    .typeText(todoPage.todoDialogTitle, updatedTitle)
-    .selectText(todoPage.todoDialogDescription)
-    .typeText(todoPage.todoDialogDescription, updatedDescription)
+    .typeText(todoPage.todoDialogTitle, updatedTitle, { replace: true})
+    .typeText(todoPage.todoDialogDescription, updatedDescription, { replace: true })
     // click update button
     .click(todoPage.updateTodoButton)
     // check todo card displays updated details
