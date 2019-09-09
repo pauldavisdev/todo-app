@@ -53,6 +53,7 @@ export class TodoDialogComponent implements OnInit {
       completed: this.data.activeTodo.completed,
     };
     this.store.dispatch(TodoPageActions.deleteTodo({ todo: todo }));
+    this.dialogRef.close();
   }
 
   onNoClick(): void {
