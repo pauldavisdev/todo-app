@@ -4,6 +4,6 @@ export class NavPage {
   navComponent = AngularSelector('app-navbar');
   logOutButton: any;
   constructor() {
-    this.logOutButton = this.navComponent.find('a').withText('Logout');
+    this.logOutButton = this.navComponent.find('button').withText('Logout');
   }
 }
