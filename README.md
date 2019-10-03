@@ -1,4 +1,13 @@
-# TodoAppNew
+# NgRx Todo App
+## A Simple Todo application with state management implemented with [NgRx](https://ngrx.io/docs).
+
+Despite NgRx being overkill for this project, it was a good way of getting my head around implementing an app that uses an NgRx architecture for state management.
+
+Much of this app was created after watching an NgRx session from ng-conf:
+
+https://www.pluralsight.com/courses/ng-conf-19-ngrx-reactive-day-1
+
+https://www.pluralsight.com/courses/ng-conf-19-ngrx-reactive-day-2
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
 
